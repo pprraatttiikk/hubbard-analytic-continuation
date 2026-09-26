@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Environments
+.venv/
+venv/
+.env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Generated data
+data/raw/
+data/processed/
+data/tensor_network/
+
+# Results / checkpoints
+results/
+*.pt
+*.pth
+*.ckpt
+
+# Generated figures
+figures/*.pdf
+figures/*.png
+
+# Logs
+*.log
