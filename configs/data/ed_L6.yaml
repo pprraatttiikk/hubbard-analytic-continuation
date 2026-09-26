@@ -42,3 +42,13 @@ random:
 
 output:
   path: data/processed/hubbard_L6_v2.h5
+
+split:
+  validation_U:
+    - 2.5
+    - 7.5
+
+  test_U:
+    - 3.0
+    - 6.0
+    - 9.0
