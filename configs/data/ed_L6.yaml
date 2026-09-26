@@ -1,0 +1,44 @@
+system:
+  L: 6
+  n_up: 3
+  n_down: 3
+  t: 1.0
+  periodic: true
+  spin: up
+
+parameters:
+  U:
+    start: 0.0
+    stop: 12.0
+    step: 0.25
+
+  beta:
+    - 10.0
+    - 20.0
+    - 30.0
+    - 40.0
+    - 50.0
+
+grid:
+  omega_min: -10.0
+  omega_max: 10.0
+  n_omega: 4001
+  n_tau: 240
+  eta: 0.08
+
+noise:
+  sigma:
+    - 0.0
+    - 1.0e-5
+    - 1.0e-4
+    - 1.0e-3
+
+  realizations:
+    clean: 1
+    noisy: 20
+
+random:
+  seed: 1234
+
+output:
+  path: data/processed/hubbard_L6_v2.h5
