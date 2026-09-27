@@ -25,14 +25,24 @@ data/processed/
 data/tensor_network/
 
 # Results / checkpoints
-results/
 *.pt
 *.pth
 *.ckpt
 
 # Generated figures
-figures/*.pdf
-figures/*.png
 
 # Logs
 *.log
+
+# Large generated data
+data/raw/
+data/processed/
+data/tensor_network/
+
+# Model checkpoints
+*.pt
+*.pth
+*.ckpt
+
+# Temporary result artifacts
+results/checkpoints/

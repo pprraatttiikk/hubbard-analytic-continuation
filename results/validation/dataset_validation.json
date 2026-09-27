@@ -1,0 +1,25 @@
+{
+  "n_spectra": 294,
+  "n_physical": 1470,
+  "n_observations": 89670,
+  "physical_split_counts": {
+    "train": 1320,
+    "validation": 60,
+    "test": 90
+  },
+  "observation_split_counts": {
+    "train": 80520,
+    "validation": 3660,
+    "test": 5490
+  },
+  "spectral_integral_min": 0.990675502657737,
+  "spectral_integral_mean": 0.9935891118066816,
+  "spectral_integral_max": 0.994855712903819,
+  "max_endpoint_error": 5.1958437552457326e-14,
+  "max_clean_storage_error": 2.9782917909670914e-08,
+  "noise_std": {
+    "1e-05": 1.0000757963128618e-05,
+    "1e-04": 0.00010000565902873928,
+    "1e-03": 0.0010000440520685342
+  }
+}

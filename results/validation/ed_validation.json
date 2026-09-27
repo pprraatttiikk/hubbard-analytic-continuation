@@ -1,0 +1,8 @@
+{
+  "free_dispersion_max_error": 5.329070518200751e-15,
+  "free_dispersion_max_variance": 7.099748146989116e-30,
+  "free_dispersion_max_sum_rule_error": 2.220446049250313e-15,
+  "U4_max_endpoint_error": 1.4432899320127035e-15,
+  "U4_max_sum_rule_error": 1.9984014443252818e-15,
+  "particle_hole_max_weight_error": 2.6645352591003757e-15
+}
