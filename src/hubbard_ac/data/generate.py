@@ -7,7 +7,10 @@ import numpy as np
 from hubbard_ac.data.noise import gaussian_noise
 from hubbard_ac.physics.basis import HubbardBasis
 from hubbard_ac.physics.ed import full_eigensystem, ground_state
-from hubbard_ac.physics.greens import greens_from_poles
+from hubbard_ac.physics.greens import (
+    greens_from_poles,
+    greens_from_spectrum,
+)
 from hubbard_ac.physics.hamiltonian import hubbard_hamiltonian
 from hubbard_ac.physics.sector_operators import (
     momentum_annihilation_operator,
@@ -389,6 +392,14 @@ def generate_dataset(
         )
 
         physical_group.create_dataset(
+            "G_exact",
+            shape=(n_physical, len(tau_fraction)),
+            dtype=np.float64,
+            compression="gzip",
+            shuffle=True,
+        )
+
+        physical_group.create_dataset(
             "G_clean",
             shape=(n_physical, len(tau_fraction)),
             dtype=np.float64,
@@ -538,11 +549,18 @@ def generate_dataset(
                 for beta_index, beta in enumerate(beta_values):
                     tau = beta * tau_fraction
 
-                    G_clean = greens_from_poles(
+                    G_exact = greens_from_poles(
                         tau=tau,
                         beta=beta,
                         poles=spectrum.poles,
                         weights=spectrum.weights,
+                    )
+
+                    G_clean = greens_from_spectrum(
+                        tau=tau,
+                        beta=beta,
+                        omega=omega,
+                        spectrum=A,
                     )
 
                     physical_group["id"][

@@ -114,6 +114,11 @@ def test_small_dataset(tmp_path):
             401,
         )
 
+        assert file["physical/G_exact"].shape == (
+            16,
+            40,
+        )
+
         assert file["physical/G_clean"].shape == (
             16,
             40,
