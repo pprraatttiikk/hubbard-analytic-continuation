@@ -124,6 +124,17 @@ def test_small_dataset(tmp_path):
             40,
         )
 
+        G_exact = file["physical/G_exact"][:]
+        G_clean = file["physical/G_clean"][:]
+
+        assert np.all(
+            np.linalg.norm(G_exact, axis=1) > 0.0
+        )
+
+        assert np.all(
+            np.linalg.norm(G_clean, axis=1) > 0.0
+        )
+
         assert file["observations/G_input"].shape == (
             64,
             40,

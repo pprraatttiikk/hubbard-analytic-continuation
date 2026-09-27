@@ -579,6 +579,10 @@ def generate_dataset(
                         physical_id
                     ] = split
 
+                    physical_group["G_exact"][
+                        physical_id
+                    ] = G_exact
+
                     physical_group["G_clean"][
                         physical_id
                     ] = G_clean
