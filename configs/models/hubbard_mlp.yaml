@@ -1,0 +1,26 @@
+data:
+  path: data/processed/hubbard_L6_v2.h5
+
+model:
+  hidden_dim: 256
+  parameter_dim: 64
+  dropout: 0.05
+  u_max: 12.0
+  beta_max: 50.0
+
+loss:
+  lambda_spectrum: 1.0
+  lambda_green: 1.0
+
+training:
+  seed: 1234
+  batch_size: 64
+  epochs: 1000
+  learning_rate: 3.0e-4
+  weight_decay: 1.0e-5
+  patience: 150
+  min_delta: 1.0e-7
+  num_workers: 0
+
+output:
+  directory: results/baseline/hubbard_mlp/seed_1234
