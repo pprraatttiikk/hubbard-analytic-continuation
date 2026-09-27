@@ -224,3 +224,71 @@ def test_noise_copies_do_not_cross_splits(tmp_path):
                 observation_splits
                 == observation_splits[0]
             )
+
+
+def test_generated_spectra_are_normalized(tmp_path):
+    output = tmp_path / "normalized.h5"
+
+    config = {
+        "system": {
+            "L": 4,
+            "n_up": 2,
+            "n_down": 2,
+            "t": 1.0,
+            "periodic": True,
+            "spin": "up",
+        },
+        "parameters": {
+            "U": {
+                "start": 0.0,
+                "stop": 2.0,
+                "step": 2.0,
+            },
+            "beta": [5.0],
+        },
+        "grid": {
+            "omega_min": -8.0,
+            "omega_max": 8.0,
+            "n_omega": 801,
+            "n_tau": 40,
+            "eta": 0.1,
+        },
+        "noise": {
+            "sigma": [0.0],
+            "realizations": {
+                "clean": 1,
+                "noisy": 1,
+            },
+        },
+        "random": {
+            "seed": 123,
+        },
+        "split": {
+            "validation_U": [],
+            "test_U": [],
+        },
+        "output": {
+            "path": str(output),
+        },
+    }
+
+    generate_dataset(
+        config,
+        output_path=output,
+    )
+
+    with h5py.File(output, "r") as file:
+        omega = file["grids/omega"][:]
+        spectra = file["spectra/A"][:]
+
+        integrals = np.trapezoid(
+            spectra,
+            x=omega,
+            axis=1,
+        )
+
+        assert np.allclose(
+            integrals,
+            1.0,
+            atol=1e-12,
+        )

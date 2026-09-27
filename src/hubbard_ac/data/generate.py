@@ -500,6 +500,18 @@ def generate_dataset(
                     eta=eta,
                 )
 
+                spectral_weight = np.trapezoid(
+                    A,
+                    x=omega,
+                )
+
+                if spectral_weight <= 0.0:
+                    raise RuntimeError(
+                        "broadened spectrum has nonpositive weight"
+                    )
+
+                A = A / spectral_weight
+
                 spectra_group["id"][spectrum_id] = spectrum_id
                 spectra_group["U"][spectrum_id] = U
                 spectra_group["k_index"][spectrum_id] = k_index
